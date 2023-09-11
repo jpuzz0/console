@@ -53,7 +53,7 @@ const ClusterChannelModal = withHandlePromise((props: ClusterChannelModalProps) 
                   'public~Input a channel that reflects the desired version. To verify if the version exists in a channel, save and check the update status. Critical security updates will be delivered to any vulnerable channels.',
                 )}
           </Text>
-          <Text component={TextVariants.p} className="pf-u-mb-md">
+          <Text component={TextVariants.p} className="pf-v5-u-mb-md">
             <ChannelDocLink />
           </Text>
         </TextContent>
@@ -72,7 +72,7 @@ const ClusterChannelModal = withHandlePromise((props: ClusterChannelModalProps) 
             <>
               <TextInput
                 id="channel"
-                onChange={(newChannel) => setChannel(newChannel)}
+                onChange={(_event, newChannel) => setChannel(newChannel)}
                 value={channel}
                 placeholder={t(`public~e.g., {{version}}`, {
                   version: `stable-${version.major}.${version.minor}`,

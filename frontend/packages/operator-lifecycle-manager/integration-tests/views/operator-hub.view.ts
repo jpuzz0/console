@@ -1,6 +1,6 @@
 import { browser, $, ExpectedConditions as until, by, element } from 'protractor';
 
-export const operatorModal = $('.pf-c-modal-box');
+export const operatorModal = $('.pf-v5-c-modal-box');
 export const operatorModalBody = $('[data-test-id="operator-modal-box"]');
 export const operatorModalInstallBtn = $('[data-test-id="operator-install-btn"]');
 export const viewInstalledOperator = () =>
@@ -16,7 +16,7 @@ export const createSubscriptionFormInstallMode = element(
   by.cssContainingText('h5', 'Installation Mode'),
 );
 export const allNamespacesInstallMode = $('input[value="AllNamespaces"]');
-export const createSubscriptionError = $('.pf-c-alert.pf-m-danger');
+export const createSubscriptionError = $('.pf-v5-c-alert.pf-m-danger');
 
 export const communityWarningModal = $('.co-modal-ignore-warning');
 export const viewInstalledOperatorsBtn = $('[data-test="view-installed-operators-btn"]');

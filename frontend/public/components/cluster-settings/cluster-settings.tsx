@@ -199,7 +199,7 @@ export const CurrentChannel: React.FC<CurrentChannelProps> = ({ cv, canUpgrade }
       variant="link"
     >
       {label}
-      <PencilAltIcon className="co-icon-space-l pf-c-button-icon--plain" />
+      <PencilAltIcon className="co-icon-space-l pf-v5-c-button-icon--plain" />
     </Button>
   ) : (
     <>{label}</>
@@ -547,7 +547,7 @@ export const UpdateBlockedLabel = () => {
   const { t } = useTranslation();
 
   return (
-    <Label color="orange" icon={<YellowExclamationTriangleIcon />} className="pf-u-ml-sm">
+    <Label color="orange" icon={<YellowExclamationTriangleIcon />} className="pf-v5-u-ml-sm">
       {t('public~Update blocked')}
     </Label>
   );
@@ -703,7 +703,7 @@ export const NodesUpdatesGroup: React.FC<NodesUpdatesGroupProps> = ({
           {!isMaster && !isUpdated && machineConfigPoolIsEditable && (
             <Button
               variant="secondary"
-              className={isPaused ? 'pf-u-mt-sm' : 'pf-u-mt-md'}
+              className={isPaused ? 'pf-v5-u-mt-sm' : 'pf-v5-u-mt-md'}
               onClick={() =>
                 togglePaused(MachineConfigPoolModel, machineConfigPool).catch((err) =>
                   errorModal({ error: err.message }),
@@ -1121,7 +1121,7 @@ export const ClusterVersionDetailsTable: React.FC<ClusterVersionDetailsTableProp
                   <>
                     {!hasAvailableUpdates(cv) && hasNotRecommendedUpdates(cv) && (
                       <Alert
-                        className="pf-u-my-sm"
+                        className="pf-v5-u-my-sm"
                         isInline
                         isPlain
                         title={t(
@@ -1250,7 +1250,7 @@ export const ClusterVersionDetailsTable: React.FC<ClusterVersionDetailsTableProp
         ) : (
           <>
             <TextContent>
-              <Text component={TextVariants.p} className="help-block pf-u-mb-lg">
+              <Text component={TextVariants.p} className="help-block pf-v5-u-mb-lg">
                 {t(
                   'public~There is a threshold for rendering update data which may cause gaps in the information below.',
                 )}
