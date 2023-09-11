@@ -43,7 +43,7 @@ const DEFAULTS = {
   // Operator Hub & Installed Operators
   ocsOperator: $('a[data-test-operator-row="OpenShift Container Storage"]'),
   ocsOperatorStatus: $('.co-clusterserviceversion-row__status'),
-  createLink: $('.pf-c-card__footer a'),
+  createLink: $('.pf-v5-c-card__footer a'),
   searchInputOperatorHub: $('input[placeholder="Filter by keyword..."]'),
   searchInputOperators: $('[data-test-id="list-page-search-input"]'),
   ocsOperatorInstallHeading: $('.co-clusterserviceversion-install__heading'),
@@ -97,17 +97,17 @@ const DEFAULTS = {
   attachedDevicesMode: $('input[value="Internal - Attached Devices"]'),
 
   // attached devices
-  LSOAlert: $('.pf-c-alert__title'),
+  LSOAlert: $('.pf-v5-c-alert__title'),
   LSOWizard: $('.ceph-create-sc-wizard'),
   scDropdown: $('#ceph-sc-dropdown'),
   selectSC: (sc: string) => $(`#${sc}-link`),
   createNewSCBtn: $('.ceph-ocs-install__create-new-sc-btn'),
   currentStep: $('.ceph-create-sc-wizard .pf-m-current'),
   volumeSetName: $('#create-lvs-volume-set-name'),
-  confirmModal: $('.pf-c-modal-box__title'),
+  confirmModal: $('.pf-v5-c-modal-box__title'),
   localVolumeSetView: $('.ceph-ocs-install__form-wrapper'),
   createStorageClusterView: $('.co-m-pane__form'),
-  confirmBtn: $('.pf-c-modal-box__footer .pf-m-primary'),
+  confirmBtn: $('.pf-v5-c-modal-box__footer .pf-m-primary'),
   nodeList: $('.ceph-node-list__max-height'),
   errorAlert: $('.pf-m-danger'),
   nodesCntOnLVS: $('.ceph-ocs-install__stats div:first-child'),
@@ -119,7 +119,7 @@ const DEFAULTS = {
 const OCP_44 = {
   ocsOperator: $('a[data-test-operator-row="OpenShift Container Storage"]'),
   ocsOperatorStatus: $('.co-clusterserviceversion-row__status'),
-  createLink: $('.pf-c-card__footer a'),
+  createLink: $('.pf-v5-c-card__footer a'),
   searchInputOperators: $('input[placeholder="Filter by name..."]'),
 };
 

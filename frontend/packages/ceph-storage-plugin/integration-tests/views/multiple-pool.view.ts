@@ -23,7 +23,7 @@ export enum POOL_STATUS {
 export const inputProvisioner = $('button[id=storage-class-provisioner]');
 export const provisionerDropdown = $('#storage-class-provisioner');
 export const selectInput = $('[data-test-id=dropdown-text-filter]');
-export const createPoolDropdown = $('button[class=pf-c-dropdown__menu-item]');
+export const createPoolDropdown = $('button[class=pf-v5-c-dropdown__menu-item]');
 export const poolModal = $('modal-content');
 export const allowExpand = $('div[class=checkbox]');
 export const poolDropdownButton = $('button[id=pool-dropdown-id]');
@@ -36,9 +36,9 @@ export const poolName = $('input[name=newPoolName]');
 export const replicaSelect = $('button[data-test-id="2"]');
 export const poolForm = $('label[for=pool-name]');
 export const modalPresence = $('div[class=modal-content]');
-export const poolStatusCheck = $('div[class=pf-c-empty-state__body]');
-export const dropdownPoolName = $('div[class=pf-c-dropdown__menu-item-main]');
-export const poolDescription = $('div[class=pf-c-dropdown__menu-item-description]');
+export const poolStatusCheck = $('div[class=pf-v5-c-empty-state__body]');
+export const dropdownPoolName = $('div[class=pf-v5-c-dropdown__menu-item-main]');
+export const poolDescription = $('div[class=pf-v5-c-dropdown__menu-item-description]');
 
 export const goToStorageClassView = async () => {
   await sideNavView.clickNavLink(['Storage', 'Storage Classes']);

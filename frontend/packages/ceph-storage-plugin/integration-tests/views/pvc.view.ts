@@ -11,7 +11,7 @@ export const selectItemFromDropdown = async (item, dropdownElement) => {
 };
 
 // create pvc
-export const namespaceDropdown = $$('[class="pf-c-dropdown__toggle pf-m-plain"]').get(0);
+export const namespaceDropdown = $$('[class="pf-v5-c-dropdown__toggle pf-m-plain"]').get(0);
 export const storageclassDropdown = $('#storageclass-dropdown');
 export const inputPVCName = $('#pvc-name');
 export const selectAccessMode = (accessMode) => $(`input[value=${accessMode}]`);
