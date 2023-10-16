@@ -163,6 +163,11 @@ form.pf-v5-c-form {
   --pf-v5-global--FontSize--md: 1rem;
 }
 
+// Drawer
+.pf-v5-c-drawer__body {
+  height: 100%;
+}
+
 // Page
 .pf-v5-c-page {
   // Positions fullscreen terminal on top of mast header
