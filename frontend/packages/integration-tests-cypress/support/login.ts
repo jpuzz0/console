@@ -69,7 +69,13 @@ Cypress.Commands.add(
           }
         });
       },
-      { cacheAcrossSpecs: true },
+      {
+        cacheAcrossSpecs: true,
+        validate() {
+          // If unable to visit the home page, login has failed, and the session will be re-created.
+          cy.visit('/');
+        },
+      },
     );
     cy.visit('/'); // visits baseUrl which is set in plugins/index.js
   },
