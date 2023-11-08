@@ -46,20 +46,30 @@ const getVendorModuleRegExp = (vendorModules: string[]) =>
 
 const overpassTest = /overpass-.*\.(woff2?|ttf|eot|otf)(\?.*$|$)/;
 
-const sharedPluginTest = getVendorModuleRegExp(
-  sharedPluginModules.map((moduleName) =>
-    // Console provides specific PatternFly 4 shared modules to its dynamic plugins.
-    // These are represented in Console webpack compilation as @patternfly-4/* modules.
-    moduleName.startsWith('@patternfly/')
-      ? moduleName.replace(/^@patternfly\//, '@patternfly-4/')
-      : moduleName,
-  ),
+const sharedPluginModulesTest = getVendorModuleRegExp(
+  // Map shared module names to actual webpack modules as per shared-modules-init.ts
+  sharedPluginModules.map((moduleName) => {
+    if (moduleName === '@openshift-console/dynamic-plugin-sdk') {
+      return '@console/dynamic-plugin-sdk/src/lib-core';
+    }
+
+    if (moduleName === '@openshift-console/dynamic-plugin-sdk-internal') {
+      return '@console/dynamic-plugin-sdk/src/lib-internal';
+    }
+
+    if (moduleName.startsWith('@patternfly/')) {
+      return moduleName.replace(/^@patternfly\//, '@patternfly-4/');
+    }
+
+    return moduleName;
+  }),
 );
 
-const sharedPatternFlyCoreTest = /node_modules\/@patternfly(-\S)?\//;
-
 const config: Configuration = {
-  entry: ['./public/components/app.jsx', 'monaco-editor-core/esm/vs/editor/editor.worker.js'],
+  entry: {
+    main: ['./public/components/app.jsx', 'monaco-editor-core/esm/vs/editor/editor.worker.js'],
+    'vendor-patternfly-4': './public/vendor-patternfly-4.scss',
+  },
   output: {
     path: path.resolve(__dirname, 'public/dist'),
     publicPath: 'static/',
@@ -90,7 +100,7 @@ const config: Configuration = {
     rules: [
       {
         // Disable tree shaking on modules shared with Console dynamic plugins
-        test: sharedPluginTest,
+        test: sharedPluginModulesTest,
         sideEffects: true,
       },
       { test: /\.glsl$/, loader: 'raw!glslify' },
@@ -230,9 +240,20 @@ const config: Configuration = {
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
-        vendor: {
-          test: sharedPatternFlyCoreTest,
-          name: 'vendor-patternfly-core',
+        'vendor-patternfly-4': {
+          test: /@patternfly-4\//,
+          enforce: true,
+        },
+        'vendor-patternfly-5': {
+          // modules with @patternfly/ that don't also have @patternfly-4/ in the string
+          test: /^(?!.*@patternfly-4\/).*@patternfly\/.*/,
+          enforce: true,
+        },
+        'vendor-plugins-shared': {
+          test: ({ resource = '' }) =>
+            sharedPluginModulesTest.test(resource) &&
+            !resource.includes('/node_modules/@patternfly'),
+          enforce: true,
         },
       },
     },
