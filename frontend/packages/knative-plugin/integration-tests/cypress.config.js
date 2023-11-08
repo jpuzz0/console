@@ -36,6 +36,7 @@ module.exports = defineConfig({
     supportFile: 'support/commands/index.ts',
     baseUrl: 'http://localhost:9000',
     testIsolation: false,
-    experimentalRunAllSpecs: true,
+    experimentalMemoryManagement: true,
+    numTestsKeptInMemory: 25,
   },
 });
